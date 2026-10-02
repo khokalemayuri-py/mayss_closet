@@ -1,0 +1,125 @@
+<?php
+$item_name = isset($_GET['item']) ? htmlspecialchars($_GET['item']) : 'Selected Item';
+$item_price = isset($_GET['price']) ? (float)$_GET['price'] : 1299;
+$shipping = 100;
+$total = $item_price + $shipping;
+
+$order_success = false;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $full_name = htmlspecialchars($_POST['full_name']);
+    $address = htmlspecialchars($_POST['address']);
+    $city = htmlspecialchars($_POST['city']);
+    $pincode = htmlspecialchars($_POST['pincode']);
+    
+    // Save order data to order_history.txt file
+    $order_entry = "Order: $item_name | Amount: ₹$total | Customer: $full_name | Address: $address, $city - $pincode\n";
+    file_put_contents("order_history.txt", $order_entry, FILE_APPEND);
+    
+    $order_success = true;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | mayss.closet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">MAYSS.CLOSET</div>
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="products.php">Collections</a>
+        <a href="feedback.php">Feedback</a>
+        <a href="contact.php">Contact</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2 class="section-title">Checkout & Shipping</h2>
+
+    <?php if ($order_success): ?>
+        <div class="review-box" style="text-align: center; border-left-color: #2ec4b6; padding: 40px;">
+            <h2 style="color: #2ec4b6; margin-bottom: 15px;">🎉 Order Placed Successfully!</h2>
+            <p>Thank you for shopping with <strong>mayss.closet</strong>.</p>
+            <p style="margin-top: 10px; color: #a0a0a8;">Your shipment for <strong><?php echo $item_name; ?></strong> will be dispatched soon.</p>
+            <br>
+            <a href="products.php" class="btn">Continue Shopping</a>
+        </div>
+    <?php else: ?>
+
+    <div class="checkout-wrapper">
+        <!-- Shipping & Billing Details Form -->
+        <div class="checkout-box">
+            <h3>Shipping Details</h3>
+            <form action="" method="POST">
+                <label>Full Name</label>
+                <input type="text" name="full_name" placeholder="John Doe" required>
+
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="john@example.com" required>
+
+                <label>Phone Number</label>
+                <input type="tel" name="phone" placeholder="+91 9876543210" required>
+
+                <label>Shipping Address</label>
+                <textarea name="address" rows="3" placeholder="House No, Street, Landmark" required></textarea>
+
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex:1;">
+                        <label>City</label>
+                        <input type="text" name="city" placeholder="Mumbai" required>
+                    </div>
+                    <div style="flex:1;">
+                        <label>Pincode</label>
+                        <input type="text" name="pincode" placeholder="400001" required>
+                    </div>
+                </div>
+
+                <label>Payment Method</label>
+                <select name="payment_method">
+                    <option value="cod">Cash on Delivery (COD)</option>
+                    <option value="upi">UPI / Net Banking</option>
+                    <option value="card">Credit / Debit Card</option>
+                </select>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Confirm & Place Order</button>
+            </form>
+        </div>
+
+        <!-- Billing Summary -->
+        <div class="checkout-box">
+            <h3>Order Summary</h3>
+            <div class="summary-item">
+                <span>Product Item:</span>
+                <strong><?php echo $item_name; ?></strong>
+            </div>
+            <div class="summary-item">
+                <span>Item Price:</span>
+                <span>₹<?php echo number_format($item_price, 2); ?></span>
+            </div>
+            <div class="summary-item">
+                <span>Standard Express Shipping:</span>
+                <span>₹<?php echo number_format($shipping, 2); ?></span>
+            </div>
+            <div class="summary-item" style="border-bottom: none; font-size: 20px; color: #fca311; margin-top: 20px;">
+                <span>Total Amount:</span>
+                <strong>₹<?php echo number_format($total, 2); ?></strong>
+            </div>
+        </div>
+    </div>
+
+    <?php endif; ?>
+</div>
+
+<footer>
+    <p>&copy; 2026 MAYSS.CLOSET. All Rights Reserved. Crafted for Style.</p>
+</footer>
+
+</body>
+</html>
