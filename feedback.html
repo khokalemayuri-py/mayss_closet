@@ -5,193 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Feedback | MAYSS CLOSET</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Navigation Header */
-        header {
-            background-color: #1e293b;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #334155;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
-            color: #f8fafc;
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: #f59e0b;
-        }
-
-        nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 600;
-            font-size: 17px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #f59e0b;
-        }
-
-        /* Container Card */
-        .feedback-container {
-            max-width: 700px;
-            width: 90%;
-            margin: 50px auto;
-            background-color: #1e293b;
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-
-        h2 {
-            font-size: 30px;
-            color: #f59e0b;
-            margin-bottom: 10px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        p.subtitle {
-            text-align: center;
-            color: #94a3b8;
-            font-size: 16px;
-            margin-bottom: 30px;
-        }
-
-        /* Form Controls with Large Fonts */
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 18px; /* High visibility font size */
-            font-weight: 600;
-            color: #f8fafc;
-            margin-bottom: 10px;
-        }
-
-        .form-group input, 
-        .form-group textarea, 
-        .form-group select {
-            width: 100%;
-            padding: 16px;
-            font-size: 17px; /* Large input text */
-            background-color: #0f172a;
-            border: 1px solid #334155;
-            color: #ffffff;
-            border-radius: 8px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus, 
-        .form-group textarea:focus, 
-        .form-group select:focus {
-            border-color: #f59e0b;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 16px;
-            background-color: #f59e0b;
-            color: #0f172a;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-submit:hover {
-            background-color: #d97706;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            background-color: #0b1120;
-            border-top: 1px solid #1e293b;
-            padding: 25px;
-            text-align: center;
-            color: #94a3b8;
-            font-size: 15px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #0f172a; color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; }
+        header { background-color: #1e293b; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
+        .logo { font-size: 26px; font-weight: 800; color: #f8fafc; text-decoration: none; letter-spacing: 2px; }
+        .logo span { color: #f59e0b; }
+        nav a { color: #cbd5e1; text-decoration: none; margin-left: 25px; font-weight: 600; font-size: 17px; }
+        .feedback-container { max-width: 700px; width: 90%; margin: 50px auto; background-color: #1e293b; padding: 40px; border-radius: 12px; border: 1px solid #334155; }
+        h2 { font-size: 30px; color: #f59e0b; margin-bottom: 10px; text-align: center; }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 16px; font-size: 17px; background-color: #0f172a; border: 1px solid #334155; color: #ffffff; border-radius: 8px; }
+        .btn-submit { width: 100%; padding: 16px; background-color: #f59e0b; color: #0f172a; border: none; border-radius: 8px; font-size: 18px; font-weight: 700; cursor: pointer; }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
     <header>
-        <a href="index.php" class="logo">MAYSS <span>CLOSET</span></a>
+        <a href="index.html" class="logo">MAYSS <span>CLOSET</span></a>
         <nav>
-            <a href="index.php">Home</a>
-            <a href="products.php">Collections</a>
-            <a href="feedback.php" style="color: #f59e0b;">Feedback</a>
-            <a href="contact.php">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="products.html">Collections</a>
+            <a href="feedback.html" style="color: #f59e0b;">Feedback</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <!-- Feedback Form Card -->
     <div class="feedback-container">
         <h2>Customer Feedback</h2>
-        <p class="subtitle">We value your review! Help us improve your shopping experience.</p>
-
-        <form action="feedback.php" method="POST">
+        <form onsubmit="event.preventDefault(); alert('Thank you for your feedback!'); window.location.href='index.html';">
             <div class="form-group">
-                <label for="name">Your Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                <label>Your Name</label>
+                <input type="text" required placeholder="Enter full name">
             </div>
-
             <div class="form-group">
-                <label for="rating">Shopping Experience Rating</label>
-                <select id="rating" name="rating" required>
-                    <option value="5">⭐⭐⭐⭐⭐ (5/5 - Excellent Quality & Service)</option>
-                    <option value="4">⭐⭐⭐⭐ (4/5 - Very Good)</option>
-                    <option value="3">⭐⭐⭐ (3/5 - Average)</option>
-                    <option value="2">⭐⭐ (2/2 - Needs Improvement)</option>
+                <label>Rating</label>
+                <select required>
+                    <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                    <option value="4">⭐⭐⭐⭐ (4/5)</option>
                 </select>
             </div>
-
             <div class="form-group">
-                <label for="feedback">Your Review / Comments</label>
-                <textarea id="feedback" name="feedback" rows="5" placeholder="Write your valuable feedback here..." required></textarea>
+                <label>Your Review</label>
+                <textarea rows="4" required placeholder="Write your feedback here..."></textarea>
             </div>
-
             <button type="submit" class="btn-submit">Submit Feedback</button>
         </form>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 MAYSS CLOSET — Field Project by Mayuri Khokale (S.Y.C.S. Roll No. 44)</p>
-    </footer>
-
 </body>
 </html>
